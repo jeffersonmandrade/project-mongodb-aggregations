@@ -1,12 +1,6 @@
 db.trips.aggregate([
   { $match: {
-    $and:
-            [
-              { $expr: { $eq: [{ $year: "$startTime" }, 2016] } },
-              { $expr: { $eq: [{ $month: "$startTime" }, 3] } },
-              { $expr: { $eq: [{ $dayOfMonth: "$startTime" }, 10] } },
-            ],
-
+    startTime: { $gte: ISODate("2016-03-10"), $lt: ISODate("2016-03-11") },
   },
   },
   {
